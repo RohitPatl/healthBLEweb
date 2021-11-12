@@ -1,0 +1,273 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h3 class="m-0 text-dark">Patients <span class="syncData">LAST DATA SYNC: {{syncDate}}</span></h3>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Patient Details</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+
+    <!-- Main row -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header" style="padding: 1.75rem 1.25rem;">
+            <h3 class="card-title">Patient List</h3>
+
+            <div class="col-md-5" style="float: right;">
+              <form action="#" method="post">
+                <div class="input-group">
+                  <input type="text" name="search" placeholder="Search Patient Name..." class="form-control" [(ngModel)]="search">
+                  <!-- <span class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search Details</button>
+                  </span> -->
+                </div>
+              </form>
+            </div>
+
+            <!-- <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i></button>
+            </div> -->
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>FIRST NAME</th>
+                  <th>LAST NAME</th>
+                  <th>PATIENT ID</th>
+                  <th>DOCTOR ID</th>
+                  <th>AGE (Yrs.)</th>
+                  <th>GENDER</th>
+                  <th>BLOOD GROUP</th>
+                  <th>OXIMETER Red.</th>
+                  <th>THERMOMETER Red.</th>
+                  <th>MEDICAL COND.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let petientData of patients | search:search">
+                  <!-- <i class="copy far fa-copy" title="Copy Patient ID"></i> -->
+                  <td>{{petientData.firstName | patientname:petientData.gender}}</td>
+                  <td>{{petientData.lastName}}</td>
+                  <td>{{petientData.patientID}}</td>
+                  <td>{{petientData.doctorID}}</td>
+                  <td>{{petientData.age}}</td>
+                  <td>{{petientData.gender}}</td>
+                  <td>{{petientData.bloodgrp}}</td>
+                  <td>
+                    <div *ngFor="let patientDataOxy of petientData.usersReading; let First = first">
+                      <span *ngIf="First">{{patientDataOxy.oximeterData.spO2}} %</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngFor="let patientDataOxy of petientData.usersReading; let First = first">
+                      <span *ngIf="First">{{patientDataOxy.thermometerData.temperature}} F</span>
+                    </div>
+                  </td>
+                  <td>{{petientData.medicalCondition}}</td>
+                  <td>
+                    <button type="button" class="btn btn-block btn-outline-primary btn-sm" (click)="showDetails(petientData)" data-toggle="modal" data-target="#modal-xl">
+                      Show Details
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    <!-- /.card -->
+
+    <div class="modal fade" id="modal-xl">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Patient Details</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4">
+                <!-- Widget: user widget style 2 -->
+                <div class="card card-widget widget-user-2">
+                  <!-- Add the bg color to the header using any of the bg-* classes -->
+                  <div class="widget-user-header bg-info">
+                    <div class="widget-user-image">
+                      <img class="img-circle elevation-2" src="assets/img/patientAvatar.png" alt="User Avatar">
+                    </div>
+                    <!-- /.widget-user-image -->
+                    <h3 class="widget-user-username">{{name}}</h3>
+                    <h5 class="widget-user-desc">Age: {{age}} yrs</h5>
+                  </div>
+                  <div class="card-footer p-0">
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <b>Gender: </b> <span class="float-right">{{gender}}</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <b>Blood Group: </b> <span class="float-right">{{bloodGroup}}</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <b>Medical Condition: </b> <span class="float-right">{{medicalCond}}</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <b>Address: </b> <span class="float-right">{{address}}</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <b>Contact No.: </b> <span class="float-right">{{contactNumber}}</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <b>Email: </b> <span class="float-right">{{email}}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- /.widget-user -->
+              </div>
+              <!-- /.col -->
+              <!-- /.col -->
+              <div class="col-12 col-sm-8 col-md-8">
+                <!-- <div class="info-box mb-3 bg-info" style="height: 116px;">
+
+                  <div class="inner">
+                    <span style="font-weight: 500; font-size: 1.7rem;">Search Patient</span>
+
+                  </div>
+
+                </div> -->
+                <div class="card card-outline card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Oximeter Readings</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <!-- /.card-tools -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body" *ngFor="let petientData of patients">
+                    <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+                      <li *ngIf="Last"><b class="readings">Reading Time: </b> {{patientDataUserRed.oximeterData.date}}</li>
+                      <li *ngIf="Last"><b class="readings">SpO<sub>2</sub>:</b> {{patientDataUserRed.oximeterData.spO2}} %</li>
+                      <li *ngIf="Last"><b class="readings">Pulse Rate:</b> {{patientDataUserRed.oximeterData.pulseRate}} BPM</li>
+                      <li *ngIf="Last"><b class="readings">Pulse Impulse:</b> {{patientDataUserRed.oximeterData.pulseImpulse}} %</li>
+                    </ul>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <div class="card card-outline card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Thermometer Readings</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <!-- /.card-tools -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body" *ngFor="let petientData of patients">
+                    <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+                      <li *ngIf="Last"><b class="readings">Reading Time: </b> {{patientDataUserRed.thermometerData.date}}</li>
+                      <li *ngIf="Last"><b class="readings">Temperature:</b> {{patientDataUserRed.thermometerData.temperature}} F</li>
+                    </ul>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- /.info-box -->
+
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Consolidated Readings</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>OXIMETER Red.</th>
+                          <th>THERMOMETER Red.</th>
+                          <th>TIME</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let petientData of patients">
+                        <tr *ngFor="let patientDataUserRed of petientData.usersReading | paginate: {itemsPerPage: 4, currentPage: p};">
+                          <td style="width: 30%;">{{patientDataUserRed.oximeterData.spO2}} %</td>
+                          <td style="width: 30%;">{{patientDataUserRed.thermometerData.temperature}} F</td>
+                          <td style="width: 40%;">{{patientDataUserRed.oximeterData.date}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <div class="card-tools float-right">
+                      <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+              </div>
+              <!-- /.col -->
+
+              <!-- fix for small devices only -->
+              <div class="clearfix hidden-md-up"></div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- /.row -->
+  </div><!--/. container-fluid -->
+</section>
+<!-- /.content -->

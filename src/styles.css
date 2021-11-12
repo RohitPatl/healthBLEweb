@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Product-Sans-Regular';
+  src: url(assets/fonts/product-sans/Product_Sans_Regular.ttf);
+}
+
+*{
+  font-family: 'Product-Sans-Regular', sans-serif;
+}
