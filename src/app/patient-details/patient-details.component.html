@@ -75,13 +75,13 @@
                   <td>{{petientData.gender}}</td>
                   <td>{{petientData.bloodgrp}}</td>
                   <td>
-                    <div *ngFor="let patientDataOxy of petientData.usersReading; let First = first">
-                      <span *ngIf="First">{{patientDataOxy.oximeterData.spO2}} %</span>
+                    <div *ngFor="let patientDataOxy of petientData.usersReading; let Last = last">
+                      <span *ngIf="Last">{{patientDataOxy.oximeterData.spO2}} %</span>
                     </div>
                   </td>
                   <td>
-                    <div *ngFor="let patientDataOxy of petientData.usersReading; let First = first">
-                      <span *ngIf="First">{{patientDataOxy.thermometerData.temperature}} F</span>
+                    <div *ngFor="let patientDataOxy of petientData.usersReading; let Last = last">
+                      <span *ngIf="Last">{{patientDataOxy.thermometerData.temperature}} F</span>
                     </div>
                   </td>
                   <td>{{petientData.medicalCondition}}</td>
@@ -185,7 +185,7 @@
                   <!-- /.card-header -->
                   <div class="card-body" *ngFor="let petientData of patients">
                     <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
-                      <li *ngIf="Last"><b class="readings">Reading Time: </b> {{patientDataUserRed.oximeterData.date}}</li>
+                      <li *ngIf="Last"><b class="readings">Last Updated: </b> {{patientDataUserRed.oximeterData.date}}</li>
                       <li *ngIf="Last"><b class="readings">SpO<sub>2</sub>:</b> {{patientDataUserRed.oximeterData.spO2}} %</li>
                       <li *ngIf="Last"><b class="readings">Pulse Rate:</b> {{patientDataUserRed.oximeterData.pulseRate}} BPM</li>
                       <li *ngIf="Last"><b class="readings">Pulse Impulse:</b> {{patientDataUserRed.oximeterData.pulseImpulse}} %</li>
@@ -208,7 +208,7 @@
                   <!-- /.card-header -->
                   <div class="card-body" *ngFor="let petientData of patients">
                     <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
-                      <li *ngIf="Last"><b class="readings">Reading Time: </b> {{patientDataUserRed.thermometerData.date}}</li>
+                      <li *ngIf="Last"><b class="readings">Last Updated: </b> {{patientDataUserRed.thermometerData.date}}</li>
                       <li *ngIf="Last"><b class="readings">Temperature:</b> {{patientDataUserRed.thermometerData.temperature}} F</li>
                     </ul>
                   </div>

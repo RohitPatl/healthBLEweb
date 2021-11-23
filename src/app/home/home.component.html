@@ -155,13 +155,13 @@
                   <td>{{petientData.gender}}</td>
                   <td>{{petientData.bloodgrp}}</td>
                   <td>
-                    <div *ngFor="let patientDataOxy of petientData.usersReading; let First = first">
-                      <span *ngIf="First">{{patientDataOxy.oximeterData.spO2}} %</span>
+                    <div *ngFor="let patientDataOxy of petientData.usersReading; let Last = last">
+                      <span *ngIf="Last">{{patientDataOxy.oximeterData.spO2}} %</span>
                     </div>
                   </td>
                   <td>
-                    <div *ngFor="let patientDataOxy of petientData.usersReading; let First = first">
-                      <span *ngIf="First">{{patientDataOxy.thermometerData.temperature}} F</span>
+                    <div *ngFor="let patientDataOxy of petientData.usersReading; let Last = last">
+                      <span *ngIf="Last">{{patientDataOxy.thermometerData.temperature}} F</span>
                     </div>
                   </td>
                   <td>{{petientData.medicalCondition}}</td>
