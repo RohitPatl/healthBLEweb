@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   pageTitle: string = "HealthBLE";
   patientCount!: number;
   search: any;
-  syncDate: Date = new Date(2020, 0, 20, 12, 15, 55);
+  syncDate: Date = new Date();
   getReportStatusNormalCount = 0;
   getReportStatusCautionCount = 1;
 

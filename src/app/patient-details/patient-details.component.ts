@@ -23,7 +23,7 @@ export class PatientDetailsComponent implements OnInit {
 
   pageTitle: string = "HealthBLE";
   patientCount: number = 0;
-  syncDate: Date = new Date(2020, 0, 20, 12, 15, 55);
+  syncDate: Date = new Date();
   search: any;
 
   //Variables to show in the Modal Popup

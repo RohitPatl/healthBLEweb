@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PatientDataService } from './patient-data.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CalenderComponent } from './calender/calender.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SearchPipe,
     PatientDetailsComponent,
     PatientnamePipe,
+    CalenderComponent,
+    SettingsComponent,
+    SupportComponent,
   ],
   imports: [
     BrowserModule,

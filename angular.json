@@ -33,7 +33,11 @@
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
-              "node_modules/admin-lte/dist/css/adminlte.css"
+              "node_modules/admin-lte/dist/css/adminlte.css",
+              "node_modules/admin-lte/plugins/fullcalendar/main.min.css",
+              "node_modules/admin-lte/plugins/fullcalendar-daygrid/main.min.css",
+              "node_modules/admin-lte/plugins/fullcalendar-timegrid/main.min.css",
+              "node_modules/admin-lte/plugins/fullcalendar-bootstrap/main.min.css"
             ],
             "scripts": [
               "node_modules/admin-lte/plugins/jquery/jquery.js",
@@ -46,7 +50,13 @@
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
               "node_modules/admin-lte/plugins/jquery-mapael/maps/usa_states.js",
               "node_modules/admin-lte/plugins/chart.js/Chart.js",
-              "node_modules/admin-lte/dist/js/pages/dashboard2.js"
+              "node_modules/admin-lte/dist/js/pages/dashboard2.js",
+              "node_modules/admin-lte/plugins/moment/moment.min.js",
+              "node_modules/admin-lte/plugins/fullcalendar/main.min.js",
+              "node_modules/admin-lte/plugins/fullcalendar-daygrid/main.min.js",
+              "node_modules/admin-lte/plugins/fullcalendar-timegrid/main.min.js",
+              "node_modules/admin-lte/plugins/fullcalendar-interaction/main.min.js",
+              "node_modules/admin-lte/plugins/fullcalendar-bootstrap/main.min.js"
             ]
           },
           "configurations": {

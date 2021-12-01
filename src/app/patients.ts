@@ -14,4 +14,7 @@ export interface Patients {
   pulseRate: any;
   pulseImpulse: any;
   temperature: any;
+  patientID: any;
+  doctorID: any;
+  usersReading: any;
 }
