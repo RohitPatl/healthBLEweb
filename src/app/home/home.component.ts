@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
 import { PatientDataService } from '../patient-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   patients: any = [];
 
-  constructor(private patientData: PatientDataService) {
+  constructor(private patientData: PatientDataService, private router: Router) {
 
   }
 
