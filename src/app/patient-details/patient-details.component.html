@@ -27,6 +27,7 @@
         <div class="card">
           <div class="card-header" style="padding: 1.75rem 1.25rem;">
             <h3 class="card-title">Patient List</h3>
+            <button class="btn btn-primary float-right" (click)="reloadData()">Reload Readings</button>
 
             <div class="col-md-5" style="float: right;">
               <form action="#" method="post">
@@ -86,7 +87,7 @@
                   </td>
                   <td>{{petientData.medicalCondition}}</td>
                   <td>
-                    <button type="button" class="btn btn-block btn-outline-primary btn-sm" (click)="showDetails(petientData)" data-toggle="modal" data-target="#modal-xl">
+                    <button type="button" class="btn btn-primary btn-sm" (click)="showDetails(petientData)" data-toggle="modal" data-target="#modal-xl">
                       Show Details
                     </button>
                   </td>

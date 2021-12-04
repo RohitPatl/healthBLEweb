@@ -55,6 +55,14 @@ b.readings{
 .bg-info {
   background-color: #277DB7 !important;
 }
+.btn-primary {
+  background-color: #277DB7 !important;
+  border-color: #277DB7 !important;
+}
+.btn-primary:hover {
+  background-color: #9fd1f1 !important;
+  border-color: #9fd1f1 !important;
+}
 
 .btn-outline-primary {
   color: #277DB7;

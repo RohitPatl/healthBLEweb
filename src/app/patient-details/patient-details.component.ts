@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patients } from '../patients';
 import { PatientDataService } from '../patient-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-details',
@@ -11,7 +12,7 @@ export class PatientDetailsComponent implements OnInit {
 
   patients: any[] = [];
 
-  constructor(private patientDataInDetail: PatientDataService) {
+  constructor(private patientDataInDetail: PatientDataService, private router: Router) {
 
   }
 
@@ -59,6 +60,15 @@ export class PatientDetailsComponent implements OnInit {
     this.pulseRate = patientData.pulseRate;
     this.pulseImpulse = patientData.pulseImpulse;
     this.temperature = patientData.temperature;
+  }
+
+  reloadData() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {
+       skipLocationChange: true
+    }).then(() => {
+       this.router.navigate([currentUrl]);
+    });
   }
 
 }
