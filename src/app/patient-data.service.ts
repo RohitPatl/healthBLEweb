@@ -11,7 +11,7 @@ export class PatientDataService {
 
   }
   getPatientData(){
-    let apiUrl = "http://ec2-18-117-85-109.us-east-2.compute.amazonaws.com:8080/api/patientData/";
+    let apiUrl = "http://ec2-18-188-150-226.us-east-2.compute.amazonaws.com:8080/api/patientData/";
     return this.http.get<Patients[]>(apiUrl);
   }
 }
