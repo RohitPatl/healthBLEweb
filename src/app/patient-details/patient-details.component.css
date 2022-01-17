@@ -95,3 +95,12 @@ b.readings{
   color: grey;
   top: 15px;
 }
+
+::ng-deep .ngx-pagination .current {
+  background: #277DB7 !important;
+  border-radius: 3px !important;
+}
+
+::ng-deep .ngx-pagination a:hover {
+  border-radius: 3px !important;
+}

@@ -251,7 +251,7 @@
                         </div>
                       </div>
                     </div>
-                    <div *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;" class="float-right">
+                    <div *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;" class="float-left">
                       <span class="syncData" *ngIf="Last">Last Updated: {{patientDataUserRed.oximeterData.date}}</span>
                     </div>
 
@@ -290,7 +290,7 @@
                         </div>
                       </div>
                     </div>
-                    <div *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;" class="float-right">
+                    <div *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;" class="float-left">
                       <span class="syncData" *ngIf="Last">Last Updated: {{patientDataUserRed.thermometerData.date}}</span>
                     </div>
 
