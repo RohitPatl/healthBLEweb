@@ -48,3 +48,8 @@
 .bg-info {
   background-color: #277DB7 !important;
 }
+
+.table-hover tbody tr:hover {
+  color: #212529;
+  background-color: #DEF0F8;
+}

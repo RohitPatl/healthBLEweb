@@ -44,3 +44,7 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
+
+[class*='sidebar-dark-'] {
+  background-color: #343a40;
+}

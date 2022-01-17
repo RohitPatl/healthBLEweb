@@ -105,8 +105,8 @@
     <div class="modal fade" id="modal-xl">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Patient Details</h4>
+          <div class="modal-header" *ngFor="let petientData of patients; let Last = last">
+            <h4 class="modal-title" *ngIf="Last">Patient Details - <span class="titleInfo">#{{petientData.patientID}}</span></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -129,37 +129,64 @@
                     <ul class="nav flex-column">
                       <li class="nav-item">
                         <a class="nav-link">
-                          <b>Gender: </b> <span class="float-right">{{gender}}</span>
+                          <b>Gender : </b> <span class="float-right">{{gender}}</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link">
-                          <b>Blood Group: </b> <span class="float-right">{{bloodGroup}}</span>
+                          <b>Blood Group : </b> <span class="float-right">{{bloodGroup}}</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link">
-                          <b>Medical Condition: </b> <span class="float-right">{{medicalCond}}</span>
+                          <b>Medical Condition : </b> <span class="float-right">{{medicalCond}}</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link">
-                          <b>Address: </b> <span class="float-right">{{address}}</span>
+                          <b>Address : </b> <span class="float-right">{{address}}</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link">
-                          <b>Contact No.: </b> <span class="float-right">{{contactNumber}}</span>
+                          <b>Contact No : </b> <span class="float-right">{{contactNumber}}</span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link">
-                          <b>Email: </b> <span class="float-right">{{email}}</span>
+                          <b>Email : </b> <span class="float-right">{{email}}</span>
                         </a>
                       </li>
                     </ul>
                   </div>
                 </div>
+
+                <!-- <div class="info-box">
+                  <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">CONTACT PATIENT:</span>
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <b>Mob No : </b> <span class="txt-desc">{{contactNumber}}</span>
+                      </li>
+                      <li class="nav-item">
+                        <b>Email : </b> <span class="txt-desc">{{email}}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div> -->
+
+                <div class="info-box">
+                  <span class="info-box-icon bg-success"><i class="far fa-clock"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">LAST DATA SYNC:</span>
+                    <span class="info-box-number">{{syncDate | date:'medium'}}</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+
                 <!-- /.widget-user -->
               </div>
               <!-- /.col -->
@@ -185,12 +212,52 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body" *ngFor="let petientData of patients">
-                    <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+
+                    <div class="row" style="margin-top: -20px;">
+                      <div class="col-lg-4 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-info" *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+                          <div class="inner" *ngIf="Last">
+                            <h3>{{patientDataUserRed.oximeterData.spO2}} %</h3>
+                            SpO<sub>2</sub>
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-heart"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-info" *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+                          <div class="inner" *ngIf="Last">
+                            <h3>{{patientDataUserRed.oximeterData.pulseRate}} BPM</h3>
+                            Pulse Rate
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-heart"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-info" *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+                          <div class="inner" *ngIf="Last">
+                            <h3>{{patientDataUserRed.oximeterData.pulseImpulse}} %</h3>
+                            Pulse Impulse
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-heartbeat"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;" class="float-right">
+                      <span class="syncData" *ngIf="Last">Last Updated: {{patientDataUserRed.oximeterData.date}}</span>
+                    </div>
+
+                    <!-- <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
                       <li *ngIf="Last"><b class="readings">Last Updated: </b> {{patientDataUserRed.oximeterData.date}}</li>
-                      <li *ngIf="Last"><b class="readings">SpO<sub>2</sub>:</b> {{patientDataUserRed.oximeterData.spO2}} %</li>
-                      <li *ngIf="Last"><b class="readings">Pulse Rate:</b> {{patientDataUserRed.oximeterData.pulseRate}} BPM</li>
-                      <li *ngIf="Last"><b class="readings">Pulse Impulse:</b> {{patientDataUserRed.oximeterData.pulseImpulse}} %</li>
-                    </ul>
+                    </ul> -->
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -208,10 +275,29 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body" *ngFor="let petientData of patients">
-                    <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+
+                    <div class="row" style="margin-top: -20px;">
+                      <div class="col-lg-4 col-6">
+                        <!-- small card -->
+                        <div class="small-box bg-info" *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
+                          <div class="inner" *ngIf="Last">
+                            <h3>{{patientDataUserRed.thermometerData.temperature}} F</h3>
+                            Temperature
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;" class="float-right">
+                      <span class="syncData" *ngIf="Last">Last Updated: {{patientDataUserRed.thermometerData.date}}</span>
+                    </div>
+
+                    <!-- <ul *ngFor="let patientDataUserRed of petientData.usersReading; let Last = last;">
                       <li *ngIf="Last"><b class="readings">Last Updated: </b> {{patientDataUserRed.thermometerData.date}}</li>
                       <li *ngIf="Last"><b class="readings">Temperature:</b> {{patientDataUserRed.thermometerData.temperature}} F</li>
-                    </ul>
+                    </ul> -->
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -225,7 +311,7 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body p-0">
-                    <table class="table">
+                    <table class="table table-hover">
                       <thead>
                         <tr>
                           <th>OXIMETER Red.</th>

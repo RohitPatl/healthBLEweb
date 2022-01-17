@@ -76,3 +76,22 @@ b.readings{
 .card-primary.card-outline {
   border-top: 3px solid #277DB7;
 }
+
+.table-hover tbody tr:hover {
+  color: #212529;
+  background-color: #DEF0F8;
+}
+
+.txt-desc{
+  font-weight: 400;
+}
+
+.small-box .icon > i.fa, .small-box .icon > i.fas, .small-box .icon > i.far, .small-box .icon > i.fab, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
+  font-size: 58px;
+}
+
+.titleInfo{
+  font-size: 15px;
+  color: grey;
+  top: 15px;
+}
